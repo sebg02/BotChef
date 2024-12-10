@@ -13,7 +13,7 @@ let hf;
 async function initializeHf() {
   try {
     const response = await fetch(API_URL);
-    console.log(API_URL);
+    console.log("api_url: ", process.env.REACT_APP_API_BASE_URL);
     if (!response.ok) {
       throw new Error("Error, no se puede conectar al servidor");
     }
