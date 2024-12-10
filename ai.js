@@ -1,9 +1,7 @@
 import { HfInference } from "@huggingface/inference";
 
-const API_URL =
-  import.meta.env.MODE === "production"
-    ? import.meta.VITE_API_BASE_URL
-    : "http://localhost:3000/api-token";
+const API_URL = "https://botchefapi.onrender.com/api-token";
+//const API_URL =  "http://localhost:3000/api-token";
 
 const SYSTEM_PROMPT =
   "Eres un asistente que recibe una lista de ingredientes, debes generar una receta con estos, no es obligatorio que utilices todos los ingredientes pero si debes incluir por lo menos uno de estos, puedes agregar ingredientes que combinen con los que te son dados pero nada muy complicado de obtener, Debes estructurar tu respuesta con el título del Plato, lista de ingredientes y paso a paso. Utiliza el formato markdown para tu respuesta ";
