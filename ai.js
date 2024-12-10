@@ -1,8 +1,8 @@
 import { HfInference } from "@huggingface/inference";
 
 const API_URL =
-  process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_API_BASE_URL
+  import.meta.env.MODE === "production"
+    ? import.meta.VITE_API_BASE_URL
     : "http://localhost:3000/api-token";
 
 const SYSTEM_PROMPT =
@@ -13,7 +13,7 @@ let hf;
 async function initializeHf() {
   try {
     const response = await fetch(API_URL);
-    console.log("api_url: ", process.env.REACT_APP_API_BASE_URL);
+    console.log("api_url: ", API_URL);
     if (!response.ok) {
       throw new Error("Error, no se puede conectar al servidor");
     }
