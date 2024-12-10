@@ -1,21 +1,19 @@
 import { Header } from "./Components/Header";
 import { IngredientsContainer } from "./Components/Ingredients/IngredientsContainer";
-import { Main } from "./Components/Main";
-import { RecipeContainer } from "./Components/Recipes/RecipeContainer";
+import { Footer } from "./Components/Footer";
 
 function App() {
   return (
     <>
-      <div className="container">
-        <Header></Header>
-        <IngredientsContainer></IngredientsContainer>
-        <RecipeContainer></RecipeContainer>
+      <div className="container d-flex flex-column min-vh-100">
+        <main className="flex-grow-1">
+          <Header></Header>
+          <IngredientsContainer></IngredientsContainer>
+        </main>
+        <Footer></Footer>
       </div>
     </>
   );
 }
 
-{
-  /* <Main></Main> */
-}
 export default App;

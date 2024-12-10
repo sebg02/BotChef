@@ -1,40 +1,30 @@
 import { useState } from "react";
 
 export const IngredientsForm = ({ onAddIngredient }) => {
-  const [ingredientInput, setIngredientInput] = useState("");
-
-  const handleIngInput = (e) => {
-    setIngredientInput(e.target.value);
-  };
-
-  const sendIngredient = (e) => {
-    e.preventDefault();
-
+  const sendIngredient = (formData) => {
+    const ingredientInput = formData.get("ingredientInput");
     if (ingredientInput.trim() !== "") {
       let ingredient = ingredientInput.trim();
       ingredient = ingredient.toLowerCase();
       ingredient = ingredient[0].toUpperCase() + ingredient.slice(1);
       onAddIngredient(ingredient);
-      setIngredientInput("");
     }
   };
 
   return (
     <>
-      <form action="" className="form-inline">
+      <form action={sendIngredient} className="form-inline mt-5">
         <label htmlFor="ingredientInput" className="mr-2">
           Introduce un ingrediente:
         </label>
-        <div className="input-group">
+        <div className="input-group mt-2">
           <input
-            value={ingredientInput}
-            onChange={handleIngInput}
             type="text"
-            id="ingredientInput"
+            name="ingredientInput"
             placeholder="Ej. Arroz"
             className="form-control mr-2"
           />
-          <button onClick={sendIngredient} className="btn btn-dark">
+          <button className="btn btn-dark">
             Agregar <i class="bi bi-plus-circle"></i>
           </button>
         </div>

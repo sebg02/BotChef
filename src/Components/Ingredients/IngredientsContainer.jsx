@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IngredientsForm } from "./IngredientsForm";
 import { IngredientsList } from "./IngredientsList";
+import { RecipeContainer } from "../Recipes/RecipeContainer";
 
 export const IngredientsContainer = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -19,6 +20,10 @@ export const IngredientsContainer = () => {
     console.log(ingredient);
   };
 
+  const deleteAllIngredients = () => {
+    setIngredients([]);
+  };
+
   const onDeleteIngredient = (val) => {
     deleteIngredient(val);
   };
@@ -30,6 +35,10 @@ export const IngredientsContainer = () => {
         ingredients={ingredients}
         onDeleteIngredient={onDeleteIngredient}
       ></IngredientsList>
+      <RecipeContainer
+        listOfIngredients={ingredients}
+        deleteAllIngredients={deleteAllIngredients}
+      ></RecipeContainer>
     </>
   );
 };
